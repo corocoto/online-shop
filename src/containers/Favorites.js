@@ -1,10 +1,10 @@
-import React, {useContext} from 'react';
-import {ProductsContext} from '../context/products-context';
+import React from 'react';
+import {useStore} from '../hooks-store/store';
 import FavoriteItem from '../components/Favorites/FavoriteItem';
 import './Products.css';
 
 const Favorites = props => {
-    const favoriteProducts = useContext(ProductsContext).products.filter(p => p.isFavorite);
+    const favoriteProducts = useStore()[0].products.filter(p => p.isFavorite);
     return favoriteProducts.length > 0
         ? <ul className="products-list">
             {favoriteProducts.map(prod => (
